@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little Oaks Behavioral Services | ABA Therapy in Florida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --canopy:#24382E;
+    --canopy-deep:#182620;
+    --canopy-mid:#4C7A5D;
+    --canopy-pale:#DCE7DC;
+    --parchment:#F3F1E6;
+    --parchment-warm:#EDE9D8;
+    --bark:#8A6240;
+    --gold:#B9862B;
+    --gold-deep:#8F6A22;
+    --ink:#242420;
+    --ink-soft:#54544C;
+    --line:#D9D4C2;
+    --white:#FFFFFF;
+    --radius-card:14px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    color:var(--canopy-deep);
+    margin:0 0 0.5em;
+    letter-spacing:-0.01em;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    margin:0 0 14px;
+    display:block;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 26px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:15px;
+    text-decoration:none;
+    border:1.5px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--gold);color:var(--white);}
+  .btn-primary:hover{background:var(--gold-deep);}
+  .btn-ghost{background:transparent;color:var(--canopy-deep);border-color:var(--canopy-deep);}
+  .btn-ghost:hover{background:var(--canopy-deep);color:var(--white);}
+  .btn-ghost-light{background:transparent;color:var(--white);border-color:rgba(255,255,255,0.5);}
+  .btn-ghost-light:hover{background:rgba(255,255,255,0.12);border-color:var(--white);}
+
+  /* NAV */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(243,241,230,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:var(--maxw);margin:0 auto;padding:12px 32px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{display:flex;align-items:center;text-decoration:none;}
+  .brand-logo{height:52px;width:auto;display:block;}
+  .navlinks{display:flex;align-items:center;gap:30px;}
+  .navlinks a{font-size:14.5px;font-weight:500;text-decoration:none;color:var(--ink-soft);transition:color .15s;}
+  .navlinks a:hover{color:var(--canopy-deep);}
+  .navcta{display:flex;align-items:center;gap:12px;}
+  .menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .menu-toggle span{display:block;width:22px;height:2px;background:var(--canopy-deep);margin:5px 0;}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;padding:76px 0 40px;}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr 0.85fr;gap:56px;align-items:center;}
+  .hero h1{font-size:44px;line-height:1.12;margin-bottom:22px;}
+  .hero p.lead{font-size:18px;color:var(--ink-soft);max-width:480px;margin-bottom:32px;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px;}
+  .hero-stats{display:flex;gap:34px;padding-top:26px;border-top:1px solid var(--line);}
+  .hero-stat b{display:block;font-family:'Fraunces',serif;font-size:22px;color:var(--canopy-deep);}
+  .hero-stat span{font-size:13px;color:var(--ink-soft);}
+  .hero-art{position:relative;}
+
+  /* PRINCIPLES */
+  .principles{padding:70px 0;border-top:1px solid var(--line);}
+  .principles-head{max-width:560px;margin-bottom:46px;}
+  .principles-head p{color:var(--ink-soft);font-size:16.5px;}
+  .principle-list{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);}
+  .principle{padding:28px 26px 28px 0;border-bottom:1px solid var(--line);}
+  .principle:not(:last-child){border-right:1px solid var(--line);padding-right:26px;}
+  .principle h3{font-size:19px;margin-bottom:10px;}
+  .principle p{font-size:15px;color:var(--ink-soft);margin:0;}
+
+  /* SERVICES */
+  .services{padding:70px 0;background:var(--parchment-warm);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .services-head{max-width:600px;margin-bottom:44px;}
+  .services-head p{color:var(--ink-soft);font-size:16.5px;}
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .service-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius-card);
+    padding:28px 26px;
+  }
+  .service-icon{width:42px;height:42px;margin-bottom:18px;}
+  .service-card h3{font-size:19px;margin-bottom:10px;}
+  .service-card p{font-size:14.5px;color:var(--ink-soft);margin:0;}
+
+  /* PATH / GETTING STARTED */
+  .path{padding:76px 0;}
+  .path-head{max-width:560px;margin-bottom:56px;}
+  .path-head p{color:var(--ink-soft);font-size:16.5px;}
+  .path-track{position:relative;}
+  .path-line{position:absolute;top:19px;left:0;right:0;height:2px;background:var(--line);}
+  .path-steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .path-step{position:relative;padding-top:56px;}
+  .path-node{
+    position:absolute;top:0;left:0;
+    width:40px;height:40px;border-radius:50%;
+    background:var(--canopy);color:var(--white);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:600;font-size:16px;
+    border:4px solid var(--parchment);
+  }
+  .path-step h3{font-size:16.5px;margin-bottom:8px;}
+  .path-step p{font-size:14px;color:var(--ink-soft);margin:0;}
+
+  /* DIRECTOR */
+  .director{padding:70px 0;background:var(--canopy-pale);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .director .wrap{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start;}
+  .director-avatar{
+    width:180px;height:180px;border-radius:50%;
+    background:var(--canopy);color:var(--white);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-size:52px;font-weight:600;
+    border:6px solid var(--white);
+  }
+  .director-body h2{font-size:28px;margin-bottom:6px;}
+  .director-role{font-size:15px;color:var(--canopy-mid);font-weight:600;margin-bottom:18px;}
+  .director-body p{font-size:16px;color:var(--ink-soft);max-width:640px;}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+  .chip{
+    font-size:12.5px;font-weight:600;letter-spacing:0.02em;
+    background:var(--white);color:var(--canopy-deep);
+    border:1px solid var(--line);border-radius:100px;padding:7px 14px;
+  }
+
+  /* INSURANCE */
+  .insurance{padding:70px 0;}
+  .insurance .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .insurance h2{font-size:28px;}
+  .insurance p{color:var(--ink-soft);font-size:16px;}
+  .insurance-note{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius-card);
+    padding:24px 26px;
+  }
+  .insurance-note h3{font-size:16px;margin-bottom:12px;}
+  .insurance-note ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:14.5px;}
+  .insurance-note li{margin-bottom:8px;}
+  .status-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--parchment-warm);border:1px solid var(--line);
+    border-radius:100px;padding:6px 14px;font-size:13px;font-weight:600;
+    color:var(--gold-deep);margin-bottom:16px;
+  }
+  .status-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);}
+
+  /* CONTACT */
+  .contact{padding:80px 0;background:var(--canopy-deep);color:var(--white);}
+  .contact .wrap{display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;}
+  .contact h2{color:var(--white);font-size:32px;}
+  .contact p.lead{color:rgba(255,255,255,0.72);font-size:16.5px;max-width:460px;}
+  .contact-actions{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap;}
+  .contact-card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.16);
+    border-radius:var(--radius-card);
+    padding:26px 28px;
+  }
+  .contact-row{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.12);}
+  .contact-row:last-child{border-bottom:none;}
+  .contact-row .label{font-size:12.5px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.55);width:90px;flex:none;}
+  .contact-row .value{font-size:15px;font-weight:500;}
+
+  footer{padding:28px 0;background:var(--canopy-deep);border-top:1px solid rgba(255,255,255,0.12);}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  footer p{margin:0;font-size:13px;color:rgba(255,255,255,0.5);}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  @media (max-width:860px){
+    .navlinks{display:none;}
+    .menu-toggle{display:block;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-art{order:-1;max-width:280px;margin:0 auto;}
+    .hero h1{font-size:34px;}
+    .principle-list{grid-template-columns:1fr;}
+    .principle{border-right:none !important;padding-right:0 !important;}
+    .service-grid{grid-template-columns:1fr;}
+    .path-steps{grid-template-columns:1fr;gap:34px;}
+    .path-line{display:none;}
+    .director .wrap{grid-template-columns:1fr;text-align:left;}
+    .insurance .wrap{grid-template-columns:1fr;}
+    .contact .wrap{grid-template-columns:1fr;}
+    .wrap{padding:0 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav>
+    <a href="#top" class="brand">
+      <img src="No Background.png" alt="Little Oaks Behavioral Services" class="brand-logo">
+    </a>
+    <div class="navlinks">
+      <a href="#approach">Our approach</a>
+      <a href="#services">Services</a>
+      <a href="#path">Getting started</a>
+      <a href="#director">Clinical team</a>
+      <a href="#insurance">Insurance</a>
+    </div>
+    <div class="navcta">
+      <a href="#contact" class="btn btn-primary">Start an intake</a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">ABA therapy &middot; Florida</span>
+      <h1>Every child's growth has its own pace.</h1>
+      <p class="lead">Little Oaks provides individualized Applied Behavior Analysis therapy in the classroom, at home, and by telehealth &mdash; led directly by a Board Certified Behavior Analyst who plans and oversees every case.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Start an intake</a>
+        <a href="#path" class="btn btn-ghost">For referring providers</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>3</b><span>Service settings</span></div>
+        <div class="hero-stat"><b>1:1</b><span>BCBA-led supervision</span></div>
+        <div class="hero-stat"><b>FL</b><span>Locally owned & operated</span></div>
+      </div>
+    </div>
+    <div class="hero-art reveal">
+      <svg viewBox="0 0 360 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <ellipse cx="180" cy="392" rx="110" ry="10" fill="#DCE7DC"/>
+        <path d="M180 380V190" stroke="#8A6240" stroke-width="5" stroke-linecap="round"/>
+        <path d="M180 250c0-30-26-46-56-46" stroke="#24382E" stroke-width="4" stroke-linecap="round"/>
+        <path d="M180 220c0-32 28-50 60-50" stroke="#24382E" stroke-width="4" stroke-linecap="round"/>
+        <path d="M180 290c0-24-20-38-46-38" stroke="#4C7A5D" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M180 300c0-26 22-40 50-40" stroke="#4C7A5D" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M180 195c0-20 -16-34-32-34" stroke="#24382E" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M180 195c0-22 18-36 36-36" stroke="#24382E" stroke-width="3.5" stroke-linecap="round"/>
+        <g>
+          <circle cx="124" cy="204" r="15" fill="#DCE7DC"/>
+          <circle cx="240" cy="170" r="19" fill="#DCE7DC"/>
+          <circle cx="134" cy="252" r="13" fill="#DCE7DC"/>
+          <circle cx="230" cy="250" r="15" fill="#DCE7DC"/>
+          <circle cx="148" cy="161" r="11" fill="#DCE7DC"/>
+          <circle cx="216" cy="130" r="13" fill="#DCE7DC"/>
+          <circle cx="180" cy="150" r="17" fill="#DCE7DC"/>
+        </g>
+        <circle cx="124" cy="204" r="4.5" fill="#B9862B"/>
+        <circle cx="240" cy="170" r="4.5" fill="#B9862B"/>
+        <circle cx="134" cy="252" r="4" fill="#B9862B"/>
+        <circle cx="230" cy="250" r="4.5" fill="#B9862B"/>
+        <circle cx="148" cy="161" r="4" fill="#B9862B"/>
+        <circle cx="216" cy="130" r="4" fill="#B9862B"/>
+        <circle cx="180" cy="150" r="5" fill="#B9862B"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="principles reveal" id="approach">
+  <div class="wrap">
+    <div class="principles-head">
+      <span class="eyebrow">Our approach</span>
+      <h2>Rooted in the child, not the program</h2>
+      <p>Treatment plans start from the individual &mdash; skills, family priorities, and the settings where a child spends their day &mdash; rather than a fixed curriculum applied to every case.</p>
+    </div>
+    <div class="principle-list">
+      <div class="principle">
+        <h3>One clinician, every plan</h3>
+        <p>The Clinical Director personally reviews assessment data and approves every treatment plan &mdash; no case moves forward without direct BCBA oversight.</p>
+      </div>
+      <div class="principle">
+        <h3>Skills that generalize</h3>
+        <p>Because we work across school, home, and telehealth, goals are built to transfer between settings instead of staying confined to a therapy room.</p>
+      </div>
+      <div class="principle">
+        <h3>Families as partners</h3>
+        <p>Caregiver training is built into every plan, so progress continues between sessions and parents understand exactly what's being taught and why.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services reveal" id="services">
+  <div class="wrap">
+    <div class="services-head">
+      <span class="eyebrow">Services</span>
+      <h2>Care delivered where children already are</h2>
+      <p>The same clinical plan follows the child across settings, with one team coordinating the whole picture.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 42 42" fill="none"><rect x="7" y="14" width="28" height="20" rx="2" stroke="#24382E" stroke-width="1.6"/><path d="M11 14V10a10 10 0 0 1 20 0v4" stroke="#4C7A5D" stroke-width="1.6"/><path d="M17 22h8" stroke="#B9862B" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <h3>School-based support</h3>
+        <p>On-site collaboration with classroom staff and IEP teams to build behavior support plans that hold up in a group setting.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 42 42" fill="none"><path d="M6 20 21 8l15 12" stroke="#24382E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 18v14h22V18" stroke="#4C7A5D" stroke-width="1.6"/><rect x="18" y="24" width="6" height="8" stroke="#B9862B" stroke-width="1.6"/></svg>
+        <h3>In-home therapy</h3>
+        <p>1:1 direct sessions and caregiver coaching in the family's natural environment, where new skills need to hold up day to day.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 42 42" fill="none"><rect x="6" y="10" width="30" height="19" rx="2" stroke="#24382E" stroke-width="1.6"/><path d="M2 33h38" stroke="#4C7A5D" stroke-width="1.6" stroke-linecap="round"/><circle cx="21" cy="18" r="3.5" stroke="#B9862B" stroke-width="1.6"/></svg>
+        <h3>Telehealth</h3>
+        <p>Video-based supervision, caregiver training, and team meetings that extend clinical reach and cut down on travel barriers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="path reveal" id="path">
+  <div class="wrap">
+    <div class="path-head">
+      <span class="eyebrow">Getting started</span>
+      <h2>From referral to first session</h2>
+      <p>A predictable process for families and referring providers alike.</p>
+    </div>
+    <div class="path-track">
+      <div class="path-line"></div>
+      <div class="path-steps">
+        <div class="path-step">
+          <div class="path-node">1</div>
+          <h3>Referral &amp; verification</h3>
+          <p>We confirm insurance benefits and gather any existing diagnostic evaluation.</p>
+        </div>
+        <div class="path-step">
+          <div class="path-node">2</div>
+          <h3>Assessment</h3>
+          <p>The BCBA completes a comprehensive behavioral assessment across relevant settings.</p>
+        </div>
+        <div class="path-step">
+          <div class="path-node">3</div>
+          <h3>Individualized plan</h3>
+          <p>A treatment plan is drafted, reviewed with the family, and submitted for authorization.</p>
+        </div>
+        <div class="path-step">
+          <div class="path-node">4</div>
+          <h3>Therapy &amp; review</h3>
+          <p>Sessions begin, with ongoing supervision and regular progress review built in.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="director reveal" id="director">
+  <div class="wrap">
+    <div class="director-avatar">LO</div>
+    <div class="director-body">
+      <span class="eyebrow">Clinical leadership</span>
+      <h2>Jennifer Cardoso, BCBA</h2>
+      <div class="director-role">Founder &amp; Clinical Director</div>
+      <p>As the founder and sole clinical director, Jennifer personally oversees assessment, treatment planning, and supervision for every family Little Oaks serves &mdash; a level of direct involvement that's uncommon once agencies scale.</p>
+      <div class="chips">
+        <span class="chip">Board Certified Behavior Analyst</span>
+        <span class="chip">M.A., Applied Behavior Analysis</span>
+        <span class="chip">Direct 1:1 Supervision</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="insurance reveal" id="insurance">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Insurance</span>
+      <h2>Coverage &amp; enrollment</h2>
+      <p>Little Oaks is completing insurance credentialing with major commercial payers. If your plan isn't listed yet, contact us &mdash; we can confirm status directly and discuss options while enrollment is in progress.</p>
+    </div>
+    <div class="insurance-note">
+      <span class="status-pill"><span class="status-dot"></span>Credentialing in progress</span>
+      <h3>Currently pursuing enrollment with</h3>
+      <ul>
+        <li>Florida Blue</li>
+        <li>United Healthcare</li>
+        <li>Optum</li>
+        <li>Cigna</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact reveal" id="contact">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" style="color:#D9C084;">Get in touch</span>
+      <h2>Ready to start the conversation?</h2>
+      <p class="lead">Whether you're a parent, a pediatrician, or a school team, reach out and we'll walk you through next steps.</p>
+      <div class="contact-actions">
+        <a href="mailto:jennifer@littleoaksbehavioral.com" class="btn btn-primary">Email us</a>
+        <a href="tel:+17049981151" class="btn btn-ghost-light">Call the office</a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-row"><span class="label">Phone</span><span class="value">704-998-1151</span></div>
+      <div class="contact-row"><span class="label">Email</span><span class="value">jennifer@littleoaksbehavioral.com</span></div>
+      <div class="contact-row"><span class="label">Serving</span><span class="value">Clermont, Florida and surrounding areas</span></div>
+      <div class="contact-row"><span class="label">Hours</span><span class="value">Mon&ndash;Fri, 9am&ndash;5pm</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Little Oaks Behavioral Services, LLC. All rights reserved.</p>
+    <p>Licensing and credentialing status available upon request.</p>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const navlinks = document.querySelector('.navlinks');
+  toggle.addEventListener('click', () => {
+    const open = navlinks.style.display === 'flex';
+    navlinks.style.display = open ? 'none' : 'flex';
+    navlinks.style.cssText += open ? '' : 'position:absolute;top:100%;left:0;right:0;background:#F3F1E6;flex-direction:column;padding:20px 32px;border-bottom:1px solid #D9D4C2;gap:16px;';
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
