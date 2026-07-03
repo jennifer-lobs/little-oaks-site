@@ -155,10 +155,13 @@
   .director .wrap{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start;}
   .director-avatar{
     width:180px;height:180px;border-radius:50%;
-    background:var(--canopy);color:var(--white);
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Fraunces',serif;font-size:52px;font-weight:600;
+    overflow:hidden;
+    background:var(--canopy);
     border:6px solid var(--white);
+  }
+  .director-avatar img{
+    width:100%;height:100%;
+    object-fit:cover;
   }
   .director-body h2{font-size:28px;margin-bottom:6px;}
   .director-role{font-size:15px;color:var(--canopy-mid);font-weight:600;margin-bottom:18px;}
@@ -251,7 +254,7 @@
       <a href="#insurance">Insurance</a>
     </div>
     <div class="navcta">
-      <a href="#contact" class="btn btn-primary">Start an intake</a>
+      <a href="#" class="btn btn-primary">Start an intake</a>
       <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
@@ -264,7 +267,7 @@
       <h1>Every child's growth has its own pace.</h1>
       <p class="lead">Little Oaks provides individualized Applied Behavior Analysis therapy in the classroom, at home, and by telehealth &mdash; led directly by a Board Certified Behavior Analyst who plans and oversees every case.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Start an intake</a>
+        <a href="#" class="btn btn-primary">Start an intake</a>
         <a href="#path" class="btn btn-ghost">For referring providers</a>
       </div>
       <div class="hero-stats">
@@ -392,7 +395,9 @@
 
 <section class="director reveal" id="director">
   <div class="wrap">
-    <div class="director-avatar">LO</div>
+    <div class="director-avatar">
+      <img src="profile.jpg" alt="Jennifer Cardoso">
+    </div>
     <div class="director-body">
       <span class="eyebrow">Clinical leadership</span>
       <h2>Jennifer Cardoso, BCBA</h2>
